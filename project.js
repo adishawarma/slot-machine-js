@@ -120,15 +120,14 @@ const getWinnings = (rows, bet, lines) => {
         const symbols = rows[row];
         let allSame = true;
 
-        // Check if all symbols in the current row are the same
         for (let i = 1; i < symbols.length; i++) {
-            if (symbols[i] !== symbols[0]) { // Compare each symbol with the first one in the row
+            if (symbols[i] !== symbols[0]) { 
                 allSame = false;
                 break;
             }
         }
 
-        // If all symbols are the same, calculate the winnings
+        
         if (allSame) {
             winnings += bet * SYMBOL_VALUES[symbols[0]];
         }
@@ -137,16 +136,35 @@ const getWinnings = (rows, bet, lines) => {
     return winnings;
 };
 
-let balance = deposit(); // let instead of const so that we can modify balance in future
-const numberOfLines = getNumberOfLines();
-console.log(numberOfLines);
-const bet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transpose(reels);
-printRows(rows);
-const winnings = getWinnings(rows, bet, numberOfLines); 
-console.log("You won, ₹" + winnings.toString())
+const game = () => {
+    let balance = deposit(); 
 
+    while (true) {
 
+        console.log("You have a balance of ₹" + balance);
+        const numberOfLines = getNumberOfLines();
+        const bet = getBet(balance, numberOfLines);
+        balance -= bet * numberOfLines;
+        const reels = spin();
+        const rows = transpose(reels);
+        printRows(rows);
+        const winnings = getWinnings(rows, bet, numberOfLines); 
+        balance += winnings;
+        console.log("You won, ₹" + winnings.toString())
+
+        if (balance <= 0) {
+            console.log("0 balance.");
+            break;
+        }
+
+        const playAgain = prompt("Do you want to play again? (y/n)? ");
+
+        if (playAgain != "y") break;
+        
+
+    }
+};
+
+game();
 
 
