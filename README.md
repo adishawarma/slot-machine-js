@@ -2,6 +2,8 @@
 
 This is a simple slot machine game built using JavaScript, designed for educational purposes to practice coding concepts like loops, arrays, and functions. The goal of this project is to simulate a basic slot machine where users can deposit an amount, place bets, and spin to win based on random outcomes.
 
+Also, I am gonna use this JavaScript project in some upcoming HTML CSS project to make this run on some website.
+
 ## Table of Contents
 
 * [How the Game Works](#how-the-game-works)
@@ -28,7 +30,6 @@ For example: User has betted on 1 line, then only the first row has the stakes o
 | **D** | **D** | **A** |
 
 Now, the first row in the above grid is the winning row. If the user had selected two lines, then let's suppose their bet is ₹50, then their total betting amount would be ₹100, since ₹50 per line and 2 lines (₹50 * 2 = ₹100). So, they would lose the 2nd line bet but win the first line bet according to the multiplier.
-
 
 ## Features
 
